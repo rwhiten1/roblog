@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tag_name: category1
+
+two:
+  tag_name: category2
+
+three:
+  tag_name: category3
+  
+four:
+  tag_name: category4

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= stylesheet_link_tag :all, :cache => true %>
+</head>
+<body>
+	<div id="header">
+	 <%= render(:partial => "headerblocks") %>
+		
+		<div id="header_content" class="hdr_content">
+			<p class="huge_font opaque">RobLog: my own personal blog.</p>
+			
+			<ul class="nav med_font" id="nav_ul">
+				<li>
+					<%= link_to "Articles", :action => "index" %>
+				</li>
+				<li>
+					<a href="#">navlink2</a>
+				</li>
+				<li>
+					<a href="#">navlink3</a>
+				</li>
+				<li>
+					<a href="#">navlink1</a>
+				</li>
+				<li>
+					<a href="#">navlink2</a>
+				</li>
+				<li>
+					<%= link_to "Login", :controller => "admin_console", :action => "login" %>
+				</li>
+			</ul>
+		</div>
+	
+		
+	</div>
+	<div id="content" class="light-grey-font">
+		<%= yield :layout %>
+	</div>
+</body>
+</html>

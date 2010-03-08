@@ -1,0 +1,24 @@
+<%
+	dim = 125
+	top = 0
+	left = 0
+%>
+
+<%  
+	0.upto(1) do |i|
+		0.upto(6) do |j|
+%>
+	<div id="block_<%= i %>_<%= j %>" class="block" style="top:<%= top %>px; left:<%= left %>px; background: <%= generate_color_code %>"></div>
+<%
+			left = left + dim
+		end
+		top = top + dim
+		left = 0
+	end
+%>
+
+
+
+
+
+	

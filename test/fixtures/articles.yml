@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  synopsis: "An introductory article entry"
+  body: "This is the first *blog* post in the test db."
+  published: 0
+two:
+  title: MyOtherArticle
+  synopsis: "Blah blah blah"
+  published: 0
+  body: |
+    h1. Give RedCloth a try!
+
+    A *simple* paragraph with
+    a line break, some _emphasis_ and a "link":http://redcloth.org
+
+    * an item
+    * and another
+
+    # one
+    # two
+    
