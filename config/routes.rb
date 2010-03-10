@@ -1,13 +1,17 @@
 Roblog::Application.routes.draw do |map|
-  resources :comments
-
-  resources :articles
   
-  resources :admin_console
+  root :to => "articles#index"
+
+  resources :articles, :only => ["index", "show"] do
+    resources :comments
+  end
+  
+  resources :adminarticles, :namespace => "admin", :controller => 'admin_console', :except => ["show"]
+  #resources :admin_console, :controller => "admin_console"
   
   match "login" => "admin_console#login" 
   
-  root :to => "articles#index"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

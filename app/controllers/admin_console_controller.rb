@@ -1,13 +1,7 @@
 class AdminConsoleController < ApplicationController
-  before_filter :check_authentication, :except => [:login]
-  
-  def check_authentication
-    unless session[:user]
-      session[:intended_action] = action_name
-      session[:intended_controller] = controller_name
-      redirect_to :action => "login"
-    end
-  end
+  skip_before_filter :check_authentication, :only => "login"
+  respond_to :html, :xml
+  layout "admin_console"
   
   def login_form
     render
@@ -34,5 +28,27 @@ class AdminConsoleController < ApplicationController
   def logout
     session[:user] = nil
     redirect_to :controller => "articles", :action => "index"
+  end
+  
+  def console_page
+    @article_list = Article.all
+  end
+  
+  # GET /articles/new
+  # GET /articles/new.xml
+  def new
+    @article = Article.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @article }
+    end
+  end
+  
+  def create
+    @article = Article.new(params)
+    @article.published = false
+    @article.save
+    render :action => "console_page"
   end
 end

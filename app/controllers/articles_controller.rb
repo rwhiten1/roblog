@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  skip_before_filter :check_authentication, :only => ["index", "show"]
   respond_to :html, :xml
   layout "articles"
   # GET /articles
