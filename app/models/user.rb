@@ -1,7 +1,9 @@
 require 'digest/sha2'
 class User < ActiveRecord::Base
   has_many :comments #, :class_name => "comment", :foreign_key => "reference_id"
+  has_and_belongs_to_many :roles #, :join_table => "table_name", :foreign_key => "roles #_id"
   validates_uniqueness_of :username
+  validates_confirmation_of :pass_hash
   
   def password=(pass)
     salt = [Array.new(6){rand(256).chr}.join].pack("m").chomp
@@ -15,5 +17,9 @@ class User < ActiveRecord::Base
       raise "Username or password invalid"
     end
     user
+  end
+  
+  def self.encrypted_password(pass,salt)
+    Digest::SHA256.hexdigest(pass + salt)
   end
 end

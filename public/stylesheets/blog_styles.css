@@ -3,18 +3,19 @@ body{
 }
 	#header{
 		width: 1000px;
-		height: 250px;
+		height: 150px;
 		position: absolute;
 		margin: 0px;
 		top: 0px;
 		left: 0px;
 	}
 	
+	
 	#content{
 		width: 865px;
-		height: auto;
+		height: 100%;
 		position: absolute;
-		top: 250px;
+		top: 150px;
 		left: 0px;
 		padding: 10px 0px 20px 10px;
 	}
@@ -23,10 +24,21 @@ body{
 		/*border: 1px solid #999;*/
 		display: inline;
 		float: left;
-		width: 125px;
-		height: 125px;
 		position:absolute;
 		z-index: 0;
+		background-image: url(/../images/rounded_3.png);
+		background-repeat: no-repeat;
+	}
+	
+	/* styles for the error div */
+	.errors{
+		background-color: yellow;
+		position: relative;
+		width: 725px;
+		top: 125px;
+		left: 75px;
+		z-index: 10;
+		font-family: "Lucida Grande", Geneva, sans-serif;
 	}
 	
 	/* Font specific style classes */
@@ -53,6 +65,11 @@ body{
 	
 	.micro_font{
 		font: 20% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	}
+	
+	.article-font{
+		font-size: .95em;
+		font-family: "Lucida Grande", Geneva, sans-serif;
 	}
 	
 	/* Font color classes*/
@@ -85,15 +102,76 @@ body{
 		border-bottom: 1px dotted #fedcba;
 	}
 	
+	/*layout type stylings*/
+	/*displays an element inline.  Really meant to be used with P tags*/
+	.inline {
+		/*width: 30%;
+		position: relative;
+		top: -50px;
+		left: 300px;
+		margin: 0px;*/
+		width: 300px;
+		float: left;
+	}
+	
+	.inline p{
+		padding: 12px 0px 12px 0px;
+	}
+	
+	.clear {
+		clear: both;
+	}
+	
+	.poster{
+		/*postion:relative;
+		top: 0px;
+		left: 0px;
+		width: 50%;
+		margin: 0px;*/
+		float: left;
+		width: 400px;
+	}
+	
+	.poster p{
+		padding: 0px;
+	}
+	
+	.comment-body{
+		margin: 0px;
+		float:left;
+		width: 865px;
+	}
+	
+	.text_area{
+		padding: 20px 0px 20px 0px;
+	}
+	
+	/*borders*/
+	.red-border{
+		border: 1px solid #ff0000;
+	}
+	
+	.blue-border{
+		border: 1px solid #0000ff;
+	}
+	
+	.green-border{
+		border: 1px solid #00ff00;
+	}
+	
+	.yellow-border{
+		border: 1px solid #00ffff;
+	}
+	
 	
 	/* Header specific styles */
 	
 	.hdr_content{
 		position: absolute;
-		top: 50px;
+		top: 25px;
 		left: 75px;
-		width: 700px;
-		height: 155px;
+		width: 725px;
+		height: 100px;
 		background-color: #cba987; /*#bcdcac;*/
 		/*background-color: transparent;*/
 		z-index: 2;
@@ -147,6 +225,21 @@ body{
 		color: #012345;
 	}
 	
+	.nav li p{
+		display: inline;
+	}
+	
+	.nav li a.lt_grey{
+		width: auto;
+		padding: 2px 10px 10px 10px;
+		height: 10%;
+		color: #fedcba;
+	}
+	
+	#comment_nav{
+		margin: 0px 0px 40px 0px;
+	}
+	
 	/*article specific styles*/
 	.article{
 		padding: 20px 0px 10px 0px;
@@ -175,4 +268,85 @@ body{
 	    margin: 0px;
 	    padding: 5px;
 	}
+	
+	/*styling for the login form*/
+	.login{
+		position: relative;
+		top: 120px;
+		left: 532px;
+		width: 233px;
+		z-index: 2;
+		padding: 5px 0px 10px 10px;
+		background: #cba987;
+		
+	}
+	
+	/*generic table styling*/
+	.blog_table{
+		border-width: 0px 1px 1px 0px;
+		border-style: solid;
+		border-color: #fff;
+	}
+	
+	.blog_table td{
+		border-color: #fff;
+	    border-width: 1px 0px 0px 1px;
+	    border-style: solid;
+	    margin: 0px;
+	    padding: 5px;
+	}
+	
+	/*Admin Console stylings, beginning with the articles table*/
+	#article_list{
+		position: absolute;
+		top: 75px;
+		left: 0;
+		width: 850px;
+		height: auto;
+		padding: 10px 0px 20px 0px;
+	}
+	
+	#article_list table{
+		border-width: 0px 1px 1px 0px;
+		border-style: solid;
+		border-color: #fff;
+	}
+	
+	#article_list table td{
+		border-color: #fff;
+	    border-width: 1px 0px 0px 1px;
+	    border-style: solid;
+	    margin: 0px;
+	    padding: 5px;
+	}
+	
+	#admin_header{
+		width: 1000px;
+		height: 75px;
+		position: absolute;
+		margin: 0px;
+		top: 0px;
+		left: 0px;
+	}
+	
+	#admin_hdr_content{
+		width: 800px;
+		height: auto;
+		position: absolute;
+		top: 40px;
+		left: 0px;
+		padding: 10px 0px 20px 0px;
+	}
+	
+	.admin_content{
+		position: absolute;
+		top: 75px;
+		left: 0;
+		width: 850px;
+		height: auto;
+		padding: 20px 0px 20px 10px;
+	}
+	
+	
+	
 	

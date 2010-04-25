@@ -1,11 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  username: MyString
-  email: MyString
-  pass_hash: MyString
+<% SALT = "a2s3d4f" unless defined?(SALT) %>
 
-two:
-  username: MyString
-  email: MyString
-  pass_hash: MyString
+admin:
+  username: adminuser
+  email: admin@roblog.com
+  pass_hash: <%= User.encrypted_password("password", SALT) %>
+  password_salt: <%= SALT %>
+
+commenter:
+  username: commenter
+  email: commenter@roblog.com
+  pass_hash: <%= User.encrypted_password("password", SALT) %>
+  password_salt: <%= SALT %>
+  
+publisher:
+  username: publisher
+  email: author@roblog.com
+  pass_hash: <%= User.encrypted_password("password", SALT) %>
+  password_salt: <%= SALT %>

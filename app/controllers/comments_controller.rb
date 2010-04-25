@@ -1,13 +1,16 @@
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
+  layout "articles"
+  #Skip all the filters for right now
+  skip_before_filter :check_authentiction, :only => ["show", "index"]
+  skip_before_filter :check_authorization, :only => ["show", "index"]
   def index
     @comments = Comment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
+    @article = Article.find(params[:article_id])
+    #redirect_to :controller => "articles", :action => "show"
+    render "articles/show"
+    
   end
 
   # GET /comments/1
@@ -40,17 +43,20 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Comment.new(params[:comment])
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
+    
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.create(params[:comment])
+    @comment.save #not sure if this is necessary
+    redirect_to "/articles/#{@article.id}"
+    #respond_to do |format|
+    #  if @comment.save
+    #    format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
+    #    format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+    #  else
+    #    format.html { render :action => "new" }
+    #    format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PUT /comments/1
@@ -72,7 +78,9 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
+    puts ">>>> Destroying a comment <<<<"
     @comment = Comment.find(params[:id])
+    puts "found comment>>> #{@comment}"
     @comment.destroy
 
     respond_to do |format|

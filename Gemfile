@@ -18,6 +18,12 @@ gem "RedCloth"
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test
-# group :test do
-#   gem "webrat"
-# end
+group :test do
+	gem "rspec"
+	gem "rspec-rails", ">= 2.0.0.beta.1"
+	gem "cucumber-rails"
+	#gem "webrat"
+	gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+	gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
+	gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git", :branch => "rails3"
+end

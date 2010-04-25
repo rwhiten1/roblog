@@ -1,18 +1,23 @@
-<% form_for(@comment) do |f| %>
+
+<h2 class="light-grey-font med_font">Post a new comment</h2>
+<% if !session[:user] %>
+<div id="reg_nav" style="position: relative; top: -25px; left:550px; width:20%;">
+	<ul class="nav med_font" id="comment_nav">
+		<li><%= link_to "Login", {:controller => "admin_console", :action => "login_form", :id => @article.id },{:class => "lt_grey"} %></li>
+		<li><%= link_to "Register", {:controller => "users", :action => "new", :id => @article.id},{:class => "lt_grey"} %></li>
+	</ul>
+</div>
+<% end %>	
+
+<% form_for([@article,@article.comments.build]) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :article_id %><br />
-    <%= f.text_field :article_id %>
-  </div>
+  <%= f.text_area :body,:rows => 10, :cols => 100 , :class => "text_area"%>
+  
+  <% if session[:user] %>
+	<input type="hidden" name="comment[user_id]" value="<%= session[:user] %>">
+  <% end %>
+	
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -12,4 +12,28 @@ module ArticlesHelper
     }
     code + ";"
   end
+  
+  def create_blocks(p_hash)
+    rows = p_hash[:rows]
+    columns = p_hash[:columns]
+    width = p_hash[:width]
+    height = p_hash[:height]
+    css_class = p_hash[:class]
+    
+    top = 0
+  	left = 0
+  	html = ""
+    0.upto(rows - 1) do |row|
+      0.upto(columns -1) do |col|
+        html += "<div id='block_#{row}_#{col}'"
+        html += " class='#{css_class}' " if css_class
+        html += "style='width: #{width}px; height: #{height}px; top: #{top}px; left: #{left}px; background-color: #{generate_color_code}'></div>\n"
+        left = left + width
+      end
+      top = top + height
+      left = 0
+    end
+    
+    html.html_safe
+  end
 end

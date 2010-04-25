@@ -1,39 +1,54 @@
 <!DOCTYPE html>
+<% user = check_and_return_user %>
 <html>
 <head>
 	<%= stylesheet_link_tag :all, :cache => true %>
+	<%= javascript_include_tag :all %>
+
 </head>
 <body>
 	<div id="header">
-	 <%= render(:partial => "headerblocks") %>
+	 <%= create_blocks :width => 25, :height => 25, :columns => 35, :rows => 6, :class => "block" %>
 		
 		<div id="header_content" class="hdr_content">
-			<p class="huge_font opaque">RobLog: my own personal blog.</p>
+			<p class="big_font opaque">RobLog: my own personal blog.</p>
 			
 			<ul class="nav med_font" id="nav_ul">
 				<li>
-					<%= link_to "Articles", :action => "index" %>
+					<%= link_to "Articles", "/" %>
 				</li>
 				<li>
-					<a href="#">navlink2</a>
+					<%if user %>
+						<p>Hello <%=  user.username %></p>
+					<% end %>
 				</li>
 				<li>
-					<a href="#">navlink3</a>
+					<% if !user %>
+						<% if @article%>
+					<%= link_to "Login", :controller => "admin_console", :action => "login_form", :id => @article.id %>
+						<% else %>
+					<%= link_to "Login", :controller => "admin_console", :action => "login_form" %>	
+						<% end %>
+					<% else %>
+					<%= link_to "Logout", :controller => "admin_console", :action => "logout"%>
+					<% end %>
 				</li>
+				<% if user && user.roles.select {|r| r.name == "Superuser"} %>
 				<li>
-					<a href="#">navlink1</a>
+					<%= link_to "Administration", :controller => "admin_console", :action => "index"%>
 				</li>
-				<li>
-					<a href="#">navlink2</a>
-				</li>
-				<li>
-					<%= link_to "Login", :controller => "admin_console", :action => "login" %>
-				</li>
+				<% end %>
+				
 			</ul>
 		</div>
-	
 		
+		<% if flash[:notice] %>
+			<div id="error-div" class="errors red-border">
+				<p><%= flash[:notice] %></p>
+			</div>
+		<% end %>
 	</div>
+	
 	<div id="content" class="light-grey-font">
 		<%= yield :layout %>
 	</div>

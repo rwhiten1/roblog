@@ -6,3 +6,17 @@
 <div class="article-body white-font med_font">
   <%= @article.render_to_html.html_safe %>
 </div>
+
+<div class="article-body white-font med_font">
+	<h3 class="light-grey-font dotted-underline" style="width: 100%;">Comments</h3>
+	<% if @article.comments.count > 0 %>
+		<%= render :partial => "comments/comment", :collection => @article.comments %>
+	<% else %>
+		<p class="white-font small_font">There are no comments on this article yet</p>
+	<% end %>
+
+</div>
+
+<div id="comment-form" class="article-body clear">
+ 	<%= render :partial => "comments/form", :object => @article %>
+</div>

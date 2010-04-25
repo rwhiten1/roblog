@@ -49,6 +49,14 @@ class Article < ActiveRecord::Base
     self.save
   end
   
+  def get_status
+    if self.published? then
+      return "published"
+    else
+      return "draft"
+    end
+  end
+  
   
   
 end
