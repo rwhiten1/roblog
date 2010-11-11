@@ -8,6 +8,8 @@ Roblog::Application.routes.draw do |map|
   
   resources :users
   
+  resources :roles
+  
   resources :adminarticles, :namespace => "admin", :controller => 'admin_console'
   #resources :admin_console, :controller => "admin_console"
   

@@ -2,7 +2,8 @@
 <% user = check_and_return_user %>
 <html>
 <head>
-	<%= stylesheet_link_tag :all, :cache => true %>
+	<%= stylesheet_link_tag "blog_styles", :cache => true %>
+	<%= stylesheet_link_tag "scaffold", :cache => true %>
 	<%= javascript_include_tag :all %>
 
 </head>
@@ -11,7 +12,7 @@
 	 <%= create_blocks :width => 25, :height => 25, :columns => 35, :rows => 6, :class => "block" %>
 		
 		<div id="header_content" class="hdr_content">
-			<p class="big_font opaque">RobLog: my own personal blog.</p>
+			<p class="big_font opaque">~~~~~~~~~~EXOCORTEX~~~~~~~~~~</p>
 			
 			<ul class="nav med_font" id="nav_ul">
 				<li>
