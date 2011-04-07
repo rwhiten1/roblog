@@ -6,6 +6,12 @@
 	<%= stylesheet_link_tag "scaffold", :cache => true %>
 	<%= javascript_include_tag :all %>
 
+	<script type="text/javascript">
+		window.onload = function(){
+			Effect.Fade("notice-div", {duration: 3.0 });
+		}
+		
+	</script>
 </head>
 <body>
 	<div id="header">
@@ -19,33 +25,33 @@
 					<%= link_to "Articles", "/" %>
 				</li>
 				<li>
-					<%if user %>
-						<p>Hello <%=  user.username %></p>
+					<%if current_user %>
+						<p>Hello <%=  current_user.username %></p>
 					<% end %>
 				</li>
 				<li>
-					<% if !user %>
-						<% if @article%>
-					<%= link_to "Login", :controller => "admin_console", :action => "login_form", :id => @article.id %>
-						<% else %>
-					<%= link_to "Login", :controller => "admin_console", :action => "login_form" %>	
-						<% end %>
+					<% if !current_user %>
+						<%= link_to "Login", new_user_session_path %>	
 					<% else %>
-					<%= link_to "Logout", :controller => "admin_console", :action => "logout"%>
+					<%= link_to "Logout", destroy_user_session_path %>
 					<% end %>
 				</li>
-				<% if user && user.roles.select {|r| r.name == "Superuser"} %>
+				<% if current_user && current_user.roles.select {|r| r.name == "Publisher"}.count > 0 %>
 				<li>
-					<%= link_to "Administration", :controller => "admin_console", :action => "index"%>
+					<%= link_to "Administration", adminarticles_path %>
 				</li>
 				<% end %>
 				
 			</ul>
 		</div>
-		
 		<% if flash[:notice] %>
-			<div id="error-div" class="errors red-border">
+			<div id="notice-div" class="notice blue-border">
 				<p><%= flash[:notice] %></p>
+			</div>
+		<% end %>
+		<% if flash[:error] %>
+			<div id="error-div" class="errors red-border">
+				<p><%= flash[:error] %></p>
 			</div>
 		<% end %>
 	</div>

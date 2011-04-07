@@ -3,17 +3,24 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 # Auto-require default libraries and those for the current Rails environment.
-Bundler.require :default, Rails.env
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Roblog
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    
+    #set the layout for the devise controllers
+    config.to_prepare {
+      Devise::SessionsController.layout "articles.html.erb"
+      Devise::RegistrationsController.layout "articles.html.erb"
+      
+    }
 
     # Add additional load paths for your own custom dirs
-    # config.load_paths += %W( #{config.root}/extras )
-
+    config.autoload_paths += %W( #{config.root}/extras )
+    config.encoding = "utf-8"
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

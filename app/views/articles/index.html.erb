@@ -3,6 +3,8 @@
     <div class="article">
     <h2 class="light-grey-font big_font"><%= link_to article.title, article, {:class => "light-grey-font"} %></h2>
 	<p class="light-grey-font small_font">posted at: <%= article.created_at.strftime('%D')%></p>
+	<p class="light-grey-font small_font">by: <%= article.author.first_name %>&nbsp;<%= article.author.last_name %></p>
+	
 	<p class="light-grey-font med_font"><%= article.synopsis %></p>
 	</div>
 	<% end %>

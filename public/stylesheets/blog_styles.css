@@ -1,5 +1,5 @@
 body{
-	background-color: #000000;
+	background-color: #222222;
 	/*background-image: url(/../images/backgrnd_stars.png);*/
 	background-repeat: repeat;
 }
@@ -10,7 +10,7 @@ body{
 		margin: 0px;
 		top: 0px;
 		left: 0px;
-		background-color: #000;
+		background-color: #222222;
 	}
 
 
@@ -21,7 +21,7 @@ body{
 		top: 150px;
 		left: 0px;
 		padding: 10px 0px 20px 10px;
-		background-color: #000;
+		background-color: #222222;
 	}
 
 	.block{
@@ -39,11 +39,26 @@ body{
 		background-color: yellow;
 		position: relative;
 		width: 725px;
-		top: 125px;
+		height: 30%;
+		top: 150px;
 		left: 75px;
 		z-index: 10;
 		font-family: "Lucida Grande", Geneva, sans-serif;
 	}
+	
+	/* styles for the error div */
+	.notice{
+		background-color: #8fd8b2;
+		position: relative;
+		width: 725px;
+		height: 30%;
+		top: 150px;
+		left: 75px;
+		z-index: 10;
+		font-family: "Lucida Grande", Geneva, sans-serif;
+	}
+	
+	#notice-div p {padding-left: 10px;}
 
 	/* Font specific style classes */
 

@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :check_authentication, :check_authorization
-  filter_parameter_logging(:pass_hash)
+  before_filter :authenticate_user! #, :check_authorization
+  #filter_parameter_logging(:pass_hash)
   
   def check_authentication
-    
       
     unless session[:user]
       session[:intended_action] = action_name
@@ -37,17 +36,21 @@ class ApplicationController < ActionController::Base
     puts "\n-------END Application#check_authorization--------\n\n"
     user = User.find(session[:user])
     
-    unless user.roles.detect do |role|
-        role.rights.detect do |right|
-          right.action == action_name && right.controller == controller_name
+    if user
+      unless user.roles.detect do |role|
+          role.rights.detect do |right|
+            right.action == action_name && right.controller == controller_name
+          end
         end
+
+        flash[:notice] = "You are not authorized to view the page you requested: Username > #{user.username} "
+        #puts "You are not authorized to view #{controller_name}/#{action_name}"
+        request.env["HTTP_REFERER"] ? (redirect_to :back) : (redirect_to "/index")
+        return false
       end
-      
-      flash[:notice] = "You are not authorized to view the page you requested: Username > #{user.username} "
-      #puts "You are not authorized to view #{controller_name}/#{action_name}"
-      request.env["HTTP_REFERER"] ? (redirect_to :back) : (redirect_to "/index")
-      return false
     end
+    
+    
   end
   
   

@@ -1,5 +1,7 @@
 Roblog::Application.routes.draw do |map|
   
+  devise_for :users
+
   root :to => "articles#index"
 
   resources :articles, :only => ["index", "show"] do
@@ -13,11 +15,11 @@ Roblog::Application.routes.draw do |map|
   resources :adminarticles, :namespace => "admin", :controller => 'admin_console'
   #resources :admin_console, :controller => "admin_console"
   
-  match "login_form" => "admin_console#login_form" #, :as => "adminconsole/login"
-  match "login" => "admin_console#login"
-  match "logout" => "admin_console#logout"
-  match "adminarticles/:id/save_edits" => "admin_console#save_edits"
-  match "index" => "articles#index"
+  #match "login_form" => "admin_console#login_form" #, :as => "adminconsole/login"
+  #match "login" => "admin_console#login"
+  #match "logout" => "admin_console#logout"
+  #match "adminarticles/:id/save_edits" => "admin_console#save_edits"
+  #match "index" => "articles#index"
   
 
   # The priority is based upon order of creation:
