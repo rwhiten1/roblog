@@ -1,0 +1,13 @@
+<div id="login_form" class="admin_content med_font light-grey-font">
+<%= form_tag(:action => "login") do %>
+  <% if @article %>
+	<input type="hidden" name="article_id" value="<%= @article.id %>">
+  <% end %>
+  <label for="username">Username: </label>
+  <%= text_field_tag :username, params[:username] %></br>
+  <label for="password">Password: </label>
+  <%= password_field_tag :password, params[:password] %></br>
+  <%= submit_tag "Login", :id => "submit", :name => "submit", :class => "form_submit", :disabled => false, :disable_with => "Please wait..." %>
+<% end -%>
+</div>
+

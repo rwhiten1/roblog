@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Blog Console</title>
+		<%= stylesheet_link_tag "blog_styles", :cache => true %>
+		<%= stylesheet_link_tag "scaffold" %>
+		<%= javascript_include_tag :all, :cache => true %>
+		
+	</head>
+	<body>
+		<div id="admin_header" class="dashed-underline">
+			<%= create_blocks :width => 25, :height => 25, :columns => 40, :rows => 2, :class => "block" %>
+			<div id="admin_hdr_content">
+				<ul class="nav med_font light-grey-font">
+					<li><%= link_to "Published Articles", articles_path,{:class => "lt_grey"} %></li>
+					<li><%= link_to "Article Index", adminarticles_path ,{:class => "lt_grey"}%></li>
+					<li><%= link_to "New Article", new_adminarticle_path,{:class => "lt_grey"}%></li>
+					<li><%= link_to "Logout", destroy_user_session_path,{:class => "lt_grey"}%></li>
+					<li>
+						<%= link_to "Manage Users", users_path ,{:class => "lt_grey"} %>
+					</li>
+					
+					<li>
+						<%= link_to "Manage Roles", roles_path ,{:class => "lt_grey"} %>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<% if flash[:notice] %>
+			<div class="errors">
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+		<%= yield %>
+	</body>
+</html>

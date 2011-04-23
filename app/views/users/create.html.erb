@@ -1,0 +1,12 @@
+<h3>Please fill out the form below to register yourself</h3>
+<% tagged_form_for(@user, :url=>{:action => "create"}) do |f| %>
+	<%= f.error_messages %>
+	<%= f.text_field :username, :size => 75 %>
+	<%= f.text_field :email, :size => 75%>
+	<%= f.password_field :pass_hash, :size => 75%>
+	<%= f.password_field "pass_hash_confirmation", :size => 75 %>
+	<% if @article %>
+		<input type="hidden" name="article_id" value="<%= @article.id %>">
+	<% end %>
+	<%= f.submit "Create"%>
+<% end %>

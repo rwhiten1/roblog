@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+publisher:
+  name: "Publisher"
+
+commenter:
+  name: "Commenter"
+  
+superuser:
+  name: "Superuser"

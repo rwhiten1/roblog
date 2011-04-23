@@ -1,0 +1,30 @@
+
+<% form_for @user do |f| %>
+   <table class="light-grey-font">
+   	<tr>
+   		<td>Current Roles:</td>
+   	</tr>
+	<%
+		checked = 0
+		Role.all.each do |role|
+			
+	%>
+	<tr>
+		<td>
+			<label for="user_roles_<%= role.name %>"><%= role.name %></label></td>
+			<% if @user.roles.detect {|r| r.name == role.name } then %>
+			<td><input name="user[roles][<%= role.name %>]" id="user_roles_<%= role.name %>" type="checkbox" value="<%= role.id %>" checked="checked" />
+			<% else %>
+			<td><input name="user[roles][<%= role.name %>]" id="user_roles_<%= role.name %>" type="checkbox" value="<%= role.id %>" />
+			<% end %>
+		</td>
+	</tr>
+	<%
+		end
+	%>
+   </table>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

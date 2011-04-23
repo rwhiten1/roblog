@@ -1,0 +1,56 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+publish:
+  name: "Publish"
+  controller: "admin_console"
+  action: "create"
+
+new_article:
+  name: "New Article"
+  controller: "admin_console"
+  action: "new"
+
+edit_article:
+  name: "Edit Article"
+  controller: "admin_console"
+  action: "edit"
+  
+save_article_edits:
+  name: "Save Article Edits"
+  controller: "admin_console"
+  action: "save_edits"
+  
+update_article:
+  name: "Update Article"
+  controller: "admin_console"
+  action: "update"
+  
+admin:
+  name: "Admin Console"
+  controller: "admin_console"
+  action: "index"
+  
+new_comment:
+  name: "New Comment"
+  controller: "comments"
+  action: "new"
+
+publish_comment:
+  name: "Publish Comment"
+  controller: "comments"
+  action: "create"
+  
+edit_comment:
+  name: "Edit Comment"
+  controller: "comments"
+  action: "edit"
+  
+update_comment:
+  name: "Update Comment"
+  controller: "comments"
+  action: "update"
+  
+destroy_comment:
+  name: "Destroy Comment"
+  controller: "comments"
+  action: "destroy"

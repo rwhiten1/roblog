@@ -1,0 +1,16 @@
+<div class="admin_content light-grey-font">
+<h3>List of Users:</h3>
+<table class="light-grey-font blog_table" cellpadding="0" cellspacing="0">
+	<thead>
+		<td>Username</td><td>Email Address</td><td>Roles</td>
+	</thead>
+	<% @users.each do |user| %>
+	<tr>
+		<td> <%= link_to user.username, edit_user_path(user) %> </td>
+		<td><%= user.email.html_safe %></td>
+		    <% the_roles =""; user.roles.each {|r| the_roles += "#{r.name} &nbsp;" }%>
+		<td><%= the_roles.html_safe %></td>
+	</tr>
+	<% end %>
+</table>
+</div>

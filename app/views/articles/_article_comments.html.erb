@@ -1,0 +1,18 @@
+<div id="comments" class="article-body">
+  <h3 class="light-grey-font dotted-underline" style="width: 100%;">Comments</h3>
+  <%  @article_comments.each do |comment| %>
+    <div class="comment-body">
+		<p class="big-font"><%= User.find(comment.user_id).username %></p>
+		<p class="big-font"><%= comment.created_at %></p>
+		<p class="med-font"><%= comment.body %></p>
+		
+	</div>
+  <% end %>
+
+  <div id="comments-form">
+	<h3> Post a Comment </h3>
+	<% form_tag(:controller => "comments", :action => "create", {:class => "form"}) do %>
+	  <%= text_area_tag("body", )%>
+	<% end -%>
+  </div>
+</div>
