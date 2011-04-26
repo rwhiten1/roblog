@@ -1,0 +1,18 @@
+
+<div id="show_article" class="admin_content med_font light-grey-font">
+
+<h2 class="light-grey-font dotted-underline">
+  <%= @article.title %>
+</h2>
+
+<div class="article-body dotted-underline">
+  <%= @article.synopsis.html_safe %>
+</div>
+
+<div class="article-body white-font article-font dotted-underline">
+  <%= @article.render_to_html.html_safe %>
+</div>
+
+<%= link_to "Save", :action => "index", :controller => "admin_console", :id => @article %>
+<%= link_to "Edit", :controller => "admin_console", :action => "edit", :id => @article %>
+</div>

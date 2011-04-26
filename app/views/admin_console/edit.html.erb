@@ -1,0 +1,18 @@
+<div id="edit_article" class="admin_content med_font light-grey-font">
+	<% tagged_form_for(@article, :url => {:action => "update"}) do |f| %>
+	  
+	  <p><span class="solid-underline"><%= @article.title %></span></p>
+	  <%= f.text_area :synopsis, :rows => 2, :cols => 150 %>
+	  <%= f.text_area :body, :rows => 35, :cols => 150%>
+	  <%= link_to "Cancel", :action => "index" %>
+	  <%= link_to "Preview Edits", :action => "show" %>
+	  <label for="article_published">Published</label>
+	  <input name="article[published]" type="hidden" value="0"/>
+	  <% if @article.published? %>
+	  <input name="article[published]" id="article_published" type="checkbox" value="1" checked="yes"/>
+	  <% else%>
+	  <input name="article[published]" id="article_published" type="checkbox" value="1"/>
+	  <% end%>	
+	  <input type="submit" name="sumbit" id="save_article" value="Save Article"/>
+	<% end %>
+</div>

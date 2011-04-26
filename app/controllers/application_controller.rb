@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   #filter_parameter_logging(:pass_hash)
   
   def check_authentication
+    
       
     unless session[:user]
       session[:intended_action] = action_name

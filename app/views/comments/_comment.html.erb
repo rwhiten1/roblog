@@ -1,0 +1,11 @@
+	<div class="comment-container">
+		<div class="poster">
+			<p class="big_font light-grey-font">Posted by: &nbsp;<span class="white-font"><%= User.find(comment.user_id).username %></span></p>
+		</div>
+		<div class="inline">
+			<p class="small_font light-grey-font">on: <span class="white-font"><%= comment.created_at.strftime("%a, %B %d %Y at %I:%M%p") %></span></p>
+		</div>
+		<div class="comment-body dotted-underline">
+			<p class="med_font"><%= comment.body %></p>
+		</div>
+	</div>

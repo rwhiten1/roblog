@@ -1,0 +1,26 @@
+<div id="article_list">
+	<table class="light-grey-font med_font">
+		<thead>
+			<tr>
+				<td>Title</td><td>Created</td><td>Updated</td><td>Status</td><td>Actions</td>
+			</tr>
+		</thead>
+		<% @articles.each do |article|%>
+		<tr>
+			<td><%= link_to article.title, :controller => "admin_console", :action => "show", :id => article.id %></td>
+			<td><%= article.created_at %></td>
+			<td><%= article.updated_at %></td>
+			<td><%= article.get_status %></td>
+			<td><%= link_to "edit", :controller => "admin_console", :action => "edit", :id => article.id %></td>
+		</tr>
+		<% end %>
+	</table>
+	
+	<div id="images">
+		<h4>Upload a new image</h4>
+		<div id="image_form">
+			
+		</div>
+	</div>
+</div>
+

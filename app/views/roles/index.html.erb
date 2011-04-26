@@ -1,0 +1,15 @@
+<div class="admin_content light-grey-font">
+<h3>List of Roles:</h3>
+<table class="light-grey-font blog_table" cellpadding="0" cellspacing="0">
+	<thead>
+		<td>Role Name</td><td>Rights</td>
+	</thead>
+	<% @roles.each do |role| %>
+	<tr>
+		<td> <%= link_to role.name, edit_role_path(role) %> </td>
+		    <% the_rights =""; role.rights.each {|r| the_rights += "#{r.name} &nbsp;" }%>
+		<td><%= the_rights.html_safe %></td>
+	</tr>
+	<% end %>
+</table>
+</div>

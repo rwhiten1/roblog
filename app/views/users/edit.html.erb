@@ -1,0 +1,27 @@
+<div class="admin_content med_font">
+<H3 class="light-grey-font">Edit User: <%= @user.username %></H3>
+<%= render :partial => "form", :object => @user %>
+
+<h3 class="light-grey-font">Here are <%= @user.username %>'s Rights:</h3>
+<table class="light-grey-font blog_table" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>Role Name </td>
+		<td>Right Name</td>
+		<td>Controller</td>
+		<td>Action</td>
+	</tr>
+	<% @user.roles.each do |role|
+		role.rights.each do |right| %>
+	<tr>
+		<td class="white-font small_font"><%= role.name %></td>
+		<td class="white-font small_font"><%= right.name %></td>
+		<td class="white-font small_font"><%= right.controller %></td>
+		<td class="white-font small_font"><%= right.action %></td>
+	</tr>		
+	<%	end	
+	end %>
+</table>
+</div>
+
+
+	

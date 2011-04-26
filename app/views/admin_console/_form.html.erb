@@ -1,0 +1,10 @@
+<% tagged_form_for(@article, :url => {:action => "create"}) do |f| %>
+  <%= f.error_messages %>
+  <%= f.text_field :title, :size => 150 %>
+  <%= f.text_area :synopsis, :rows => 2, :cols => 150 %>
+  <%= f.text_area :body, :rows => 35, :cols => 150%>
+  <label for="article_published">Publish it?</label>
+  <input name="article[published]" type="hidden" value="0"/>
+  <input name="article[published]" id="article_published" type="checkbox" value="1"/>
+  <input type="submit" name="sumbit" id="save_article" value="Save Article"/>
+<% end %>
