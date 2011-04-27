@@ -3,6 +3,9 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
 require 'rspec/rails'
+require 'shoulda'
+require 'factory_girl'
+require 'database_cleaner'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -17,4 +20,20 @@ Rspec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   config.mock_with :rspec
+  
+  config.include Devise::TestHelpers, :type => :controller
+  
+  #Ensure the DB is being cleaned up
+  config.before(:suite) do
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:truncation)
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
 end

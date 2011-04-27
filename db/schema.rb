@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110402190740) do
+ActiveRecord::Schema.define(:version => 20110427003325) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(:version => 20110402190740) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "published"
+    t.integer  "author_id"
   end
+
+  add_index "articles", ["author_id"], :name => "articles_authors_fk"
 
   create_table "articles_tags", :id => false, :force => true do |t|
     t.integer "article_id"
@@ -28,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20110402190740) do
 
   add_index "articles_tags", ["article_id"], :name => "article_fk"
   add_index "articles_tags", ["tag_id"], :name => "tag_fk"
+
+  create_table "authors", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "pseudo_last"
+    t.string   "pseudo_first"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authors", ["user_id"], :name => "authors_users_fk"
 
   create_table "comments", :force => true do |t|
     t.text     "body"

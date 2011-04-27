@@ -11,6 +11,9 @@ class AdminConsoleController < ApplicationController
   
   def index
     @articles = Article.all
+    #these two are provided for authorization verification at the view level.
+    @role = Role.new
+    @article = Article.new
   end
   
   def login
@@ -62,18 +65,22 @@ class AdminConsoleController < ApplicationController
   # GET /articles/new.xml
   def new
     @article = Article.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @article }
+    @user = User.find(current_user.id)
+    if !@user.author
+      author = @user.build_author
+      author.pseudo_last = @user.last_name
+      author.pseudo_first = @user.first_name
+      author.save
     end
   end
   
   def create
     article = Article.new(params[:article])
     article.publish_it if params[:article][:published] == "1"
+    user = User.find(current_user.id)
+    user.author.articles << article
     article.save
-    articles = Article.all
+    @articles = Article.all
     redirect_to :action => "index"
   end
   

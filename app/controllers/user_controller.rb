@@ -1,9 +1,11 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
   
   #skip all the filters for now, for development purposes
   skip_before_filter :check_authentication, :only => ["new", "create"]
-  skip_before_filter :check_authorization, :only => ["new", "create"]
+  skip_before_filter :check_authorization#, :only => ["new", "create"]
+  load_and_authorize_resource
   layout "admin_console"
+  
   def new
     @user = User.new
     @article = Article.find(params[:id]) if params[:id]

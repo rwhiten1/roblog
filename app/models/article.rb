@@ -3,6 +3,7 @@ require "RedCloth"
 class Article < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_and_belongs_to_many :tags # , :join_table => "articles_tags", :foreign_key => "tag_id"
+  belongs_to :author, :class_name => "Author", :foreign_key => "author_id"
   
   def add_comment(c)
     #comment = Comment.new

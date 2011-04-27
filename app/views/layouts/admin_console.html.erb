@@ -12,16 +12,28 @@
 			<div id="admin_hdr_content">
 				<ul class="nav med_font light-grey-font">
 					<li><%= link_to "Published Articles", articles_path,{:class => "lt_grey"} %></li>
-					<li><%= link_to "Article Index", adminarticles_path ,{:class => "lt_grey"}%></li>
-					<li><%= link_to "New Article", new_adminarticle_path,{:class => "lt_grey"}%></li>
-					<li><%= link_to "Logout", destroy_user_session_path,{:class => "lt_grey"}%></li>
-					<li>
-						<%= link_to "Manage Users", users_path ,{:class => "lt_grey"} %>
-					</li>
 					
+					<% if can? :update, @article %>
+					<li><%= link_to "Article Index", adminarticles_path ,{:class => "lt_grey"}%></li>
+					<% end %>
+				
+					<% if can? :create, @article %>
+						<li><%= link_to "New Article", new_adminarticle_path,{:class => "lt_grey"}%></li>
+					<% end %>
+				
+					<li><%= link_to "Logout", destroy_user_session_path,{:class => "lt_grey"}%></li>
+					
+					<% if can? :update, current_user %>
+					<li>
+						<%= link_to "Manage Users", user_index_path ,{:class => "lt_grey"} %>
+					</li>
+					<% end %>
+					
+					<% if can? :update, @role %>
 					<li>
 						<%= link_to "Manage Roles", roles_path ,{:class => "lt_grey"} %>
 					</li>
+					<% end %>
 				</ul>
 			</div>
 		</div>

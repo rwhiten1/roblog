@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
   layout "articles"
   #Skip all the filters for right now
   skip_before_filter :check_authentiction, :only => ["show", "index"]
-  skip_before_filter :check_authorization, :only => ["show", "index"]
+  skip_before_filter :check_authorization#, :only => ["show", "index"]
+  load_and_authorize_resource
+  
   def index
     @comments = Comment.all
     @article = Article.find(params[:article_id])
@@ -48,15 +50,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(params[:comment])
     @comment.save #not sure if this is necessary
     redirect_to "/articles/#{@article.id}"
-    #respond_to do |format|
-    #  if @comment.save
-    #    format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
-    #    format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-    #  else
-    #    format.html { render :action => "new" }
-    #    format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-    #  end
-    #end
+   
   end
 
   # PUT /comments/1

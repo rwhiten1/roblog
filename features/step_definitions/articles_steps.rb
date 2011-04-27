@@ -3,6 +3,7 @@ Given /^an unpublished article titled "([^\"]*)"$/ do |title|
 end
 
 When /^I create a new article named "([^"]*)" with a body of "([^"]*)"$/ do |title, body|
+  
   When %{I follow "Administration"}
   And %{I follow "New Article"}
   fill_in "Title", :with => title

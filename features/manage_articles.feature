@@ -36,7 +36,6 @@ Feature: Manage Articles
 	  Given I am logged in as "publisher" with a password of "secret"
 	  When I create a new article named "Brand New" with a body of "ipsum lorem"
 	  	And I go back to the main page
-			And show me the page
 	  Then I should see "by: publisher"
 	
 	

@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user! #, :check_authorization
   #filter_parameter_logging(:pass_hash)
   
+  rescue_from CanCan::AccessDenied do |exception|  
+    flash[:error] = "Access denied!"  
+    redirect_to root_url  
+  end
+  
   def check_authentication
     
       

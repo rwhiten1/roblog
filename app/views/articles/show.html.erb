@@ -14,9 +14,16 @@
 	<% else %>
 		<p class="white-font small_font">There are no comments on this article yet</p>
 	<% end %>
+	
+	<% if !@article.comments || @article.comments.count <= 0
+		comment = Comment.new
+	else
+		comment = @article.comments[0]
+	end %>
 
 </div>
-
+<% if can? :create, comment %>
 <div id="comment-form" class="article-body clear">
  	<%= render :partial => "comments/form", :object => @article %>
 </div>
+<% end %>

@@ -1,14 +1,26 @@
 Roblog::Application.routes.draw do |map|
   
-  devise_for :users
+  devise_for :users 
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new'
+    get '/logout' => 'devise/sessions#destroy'
+  end
+  
+  resources :user, :controller => 'user'
 
   root :to => "articles#index"
 
-  resources :articles, :only => ["index", "show"] do
-    resources :comments
+  #resources :articles, :only => ["index", "show"] do
+  #  resources :comments
+  #end
+  
+  resources :authors do
+    resources :articles, :only => ["index", "show"]
   end
   
-  resources :users
+  resources :articles, :only => ["index", "show"]  do
+    resources :comments
+  end
   
   resources :roles
   

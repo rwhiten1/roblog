@@ -120,14 +120,18 @@ require "#{Rails.root}/app/models/right"
 #end
 #
 
+Factory.sequence :role_name do |n|
+  "Role_#{n}"
+end
+
 Factory.define :right do |r|
   r.sequence(:name) { |n| "Right No. #{n}"}
-  r.controller "comments"
-  r.action "create"
+  r.controller {"comments"}
+  r.action {"create"}
 end
 
 Factory.define :role do |r|
-  r.sequence(:name) { |n| "Role_#{n}"}
+  r.name {Factory.next :role_name}
 end
 
 #Factory.define(:right_with_role, :parent => :role) do |right|
@@ -150,13 +154,14 @@ Factory.define :user do |u|
   #  #obj.password_confirmation = "secret"
   #  #u.password_confirmation { |f| f.password }
   #end
+  u.password {"password"}
 end
 
 Factory.define :article do |a|
   a.sequence(:title) { |n| "Article #{n}"}
-  a.synopsis "This is a test article"
-  a.body "This is the body of the article"
-  a.published false
+  a.synopsis {"This is a test article"}
+  a.body {"This is the body of the article"}
+  a.published {false}
 end
 
 
