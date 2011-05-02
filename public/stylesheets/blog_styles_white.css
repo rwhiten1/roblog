@@ -12,11 +12,11 @@ body{
 	
 	
 	#content{
-		width: 865px;
+		width: 700px;
 		height: 100%;
 		position: absolute;
 		top: 150px;
-		left: 0px;
+		left: 50px;
 		padding: 10px 0px 20px 10px;
 	}
 	
@@ -26,19 +26,41 @@ body{
 		float: left;
 		position:absolute;
 		z-index: 0;
-		/*background-image: url(/../images/rounded_block_white.png);
-		background-repeat: no-repeat;*/
+		background-image: url(/../images/rounded_block_white.png);
+		background-repeat: no-repeat;
 	}
 	
-	/* styles for the error div */
+	/* styles for the error div 
 	.errors{
 		background-color: yellow;
 		position: relative;
-		width: 725px;
-		top: 125px;
-		left: 75px;
+		width: 400px;
+		height: 100px;
+		top: 200px;
+		left: 420px;
 		z-index: 10;
 		font-family: "Lucida Grande", Geneva, sans-serif;
+	}
+	*/
+	
+	/* styles for the error div */
+	.notice, .errors{
+		background-color: #8fd8b2;
+		position: relative;
+		width: 400px;
+		height: auto; /*100px;/*30%;*/
+		top: 180px;
+		left: 400px;
+		z-index: 10;
+		font-family: "Lucida Grande", Geneva, sans-serif;
+	}
+	
+	.errors{
+		background-color: yellow;
+	}
+	
+	.notice p, .errors p{
+		text-align: center;
 	}
 	
 	/* Font specific style classes */
@@ -168,22 +190,26 @@ body{
 	
 	.hdr_content{
 		position: absolute;
-		top: 25px;
-		left: 75px;
-		width: 725px;
-		height: 100px;
-		background-color: #FFFFFF; /*#cba987; /*#bcdcac;*/
+		top: 100px;
+		left: 0px;
+		width: 1150px;
+		height: 30px;
+		/*background-color: #DDD; #cba987; /*#bcdcac;*/
 		/*background-image: url(/../images/hdr_rounded.png);
 		background-repeat: no-repeat;*/
+		/*background-color: transparent;*/
 		z-index: 2;
+		padding: 20px 0px 0px 0px;
+		
 	}
-	
+
 	.hdr_content p{
 		/*color: #123456;*/
-		color: #012345;
+		/*color: #012345;*/
 		padding: 0px 10px 0px 10px;
 		/*font-family: Helvittica,Georgian, sans-serif;*/
 	}
+	
 	
 	.block p{
 		display: inline;
@@ -274,12 +300,12 @@ body{
 	/*styling for the login form*/
 	.login{
 		position: relative;
-		top: 120px;
-		left: 532px;
+		top: 25px;
+		left: 80px;
 		width: 233px;
 		z-index: 2;
 		padding: 5px 0px 10px 10px;
-		background: #cba987;
+		background: #8fd8b2; /* #cba987;*/
 		
 	}
 	

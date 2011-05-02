@@ -3,18 +3,14 @@ class Ability
   
   def initialize(user)
     user ||= User.new
-    puts "User: #{user.email} User Roles:"
-    user.roles.each do |role|
-      puts role.name
-    end
+    
     if user.role? :superuser
-      puts "I am a super user!!"
       can :manage, :all
     elsif user.role? :publisher
-      can :read, :all
+      can [:read, :create], [Article, Comment]
       
       can :create, Article
-      can :update, Article do |article|
+      can [:update, :destroy], Article do |article|
         aut = article.try(:author)
         aut.try(:user_id) == user.id
       end
@@ -26,9 +22,9 @@ class Ability
       #end
       
     elsif user.role? :commenter
-      can :read, :all
+      can :read, [Article, Comment]
       can :create, Comment
-      can :update, Comment do |comment|
+      can [:update, :destroy], Comment do |comment|
         comment.try(:user) == user
       end
     else

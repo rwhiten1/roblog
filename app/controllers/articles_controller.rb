@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_filter :authenticate_user!, :only => ["index", "show"]
-  skip_before_filter :check_authorization#, :only => ["index", "show"]
+  #skip_before_filter :check_authorization#, :only => ["index", "show"]
   load_and_authorize_resource
   respond_to :html, :xml
   layout "articles"

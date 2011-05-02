@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427003325) do
+ActiveRecord::Schema.define(:version => 20110501025426) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(:version => 20110427003325) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "last_name"
+    t.string   "first_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -14,3 +14,16 @@ describe User, "Authorization" do
     u.role?(:superuser).should == true 
   end
 end
+
+describe User, "Defaults" do
+  
+  before(:each) do
+    r = Factory.create(:role, :name => "Commenter")
+    r.save
+  end
+  
+  it "assigns a new user the role of Commenter" do
+    u = User.new 
+    u.role?(:commenter).should == true
+  end
+end

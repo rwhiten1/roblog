@@ -1,6 +1,7 @@
 Roblog::Application.routes.draw do |map|
   
-  devise_for :users 
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
     get '/logout' => 'devise/sessions#destroy'

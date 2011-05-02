@@ -1,5 +1,4 @@
 <% tagged_form_for(@article, :url => {:action => "create"}) do |f| %>
-  <%= f.error_messages %>
   <%= f.text_field :title, :size => 150 %>
   <%= f.text_area :synopsis, :rows => 2, :cols => 150 %>
   <%= f.text_area :body, :rows => 35, :cols => 150%>

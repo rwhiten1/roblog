@@ -4,7 +4,14 @@
 		</div>
 		<div class="inline">
 			<p class="small_font light-grey-font">on: <span class="white-font"><%= comment.created_at.strftime("%a, %B %d %Y at %I:%M%p") %></span></p>
-		</div>
+		</div class="inline red-border">
+		<% if user_signed_in?%>
+			<% if current_user.id == comment.user_id %>
+				<%= form_for [@article, comment], :html => {:method => :delete}  do |f| %>
+				  <%= f.submit "Delete" %>
+				<% end %>
+			<% end %>
+		<% end %>
 		<div class="comment-body dotted-underline">
 			<p class="med_font"><%= comment.body %></p>
 		</div>

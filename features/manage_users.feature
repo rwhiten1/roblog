@@ -31,10 +31,13 @@ Feature: Manage Users
 			And I am on the list of articles
 		Then I follow "test article"
 		Then I follow "Register"
-		And I fill in "Username" with "newuser"
-		And I fill in "Email" with "newuser@roblog.com"
-		And I fill in "Password" with "password"
-		And I fill in "Password confirmation" with "password"
+		When I fill in the following:
+		 | Username              | newuser            |
+		 | Email                 | newuser@roblog.com |
+		 | Password              | password           |
+		 | Password confirmation | password           |
+		 | Last name             | Doe                |
+		 | First name            | John               |
 		And I press "Sign up"
 		Then I should see "test article"
 		And I should not see "Register"
@@ -51,33 +54,30 @@ Feature: Manage Users
 		When I check "user[roles][Publisher]"
 		And I press "Update User"
 		Then I should see "hmfic"
-			And show me the page
 			And I should see "commenter"
 			And I should see "publisher"
-		#And I should see the following users and roles
-		#	  | username  | role      |
-		#	  | hmfic     | Superuser |
-		#	  | hmfic     | Publisher |
-		#	  | hmfic     | Commenter |
-		#	  | commenter | Commenter |
-		#	  | commenter | Publisher |
-		#	  | publisher | Publisher |
-		#	  | publisher | Commenter |
 	
 	
-	Scenario: Assign a right to a role
-		When I am logged in as "hmfic" with a password of "secret"
-		And I follow "Administration"
-		And I follow "Manage Roles"
-		And I follow "Superuser"
-		When I check "role[rights][Show Unpubed Article]"
-		And I press "Update Role"
-			Then I should see "Superuser"
-			And I should see the following rights
- 				| role      | right                |
- 				| Superuser | Admin Console        |
- 				| Superuser | Admin Logout         |
- 				| Superuser | Show Users           |
- 				| Superuser | Users Index          |
- 				| Superuser | Show Unpubed Article |
- 				
+	@new_user_default
+	Scenario: A new user is assigned a commenter role by default
+	  Given I am on the home page
+			And I have one article named test article
+	  When I follow "Sign up"
+	  	And I fill in the following:
+				 | Username              | new_user         |
+				 | Email                 | newuser@blog.com |
+				 | Password              | password         |
+				 | Password confirmation | password         |
+				 | Last name             | Doe              |
+				 | First name            | John             |	
+			And I press "Sign up"
+			And I am on the list of articles
+			And I follow "test article"
+		Then I should see the comment form
+		When I fill in "comment_body" with "This is a new comment"
+			And I press "Create Comment"
+		Then I should be on the "test article" page
+			And I should see "This is a new comment"
+	
+	
+	

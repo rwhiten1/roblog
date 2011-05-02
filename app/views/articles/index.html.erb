@@ -4,7 +4,11 @@
     <h2 class="light-grey-font big_font"><%= link_to article.title, article, {:class => "light-grey-font"} %></h2>
 	<p class="light-grey-font small_font">posted at: <%= article.created_at.strftime('%D')%></p>
 	<% if article.author %>
+		<% if article.author.pseudo_first != "" %>
 	<p class="light-grey-font small_font">by: <%= article.author.pseudo_first  %>&nbsp;<%= article.author.pseudo_last %></p>
+		<% else%>
+	<p class="light-grey-font small_font">by: <%= article.user.username  %></p>
+		<% end %>
 	<% end %>
 	
 	<p class="light-grey-font med_font"><%= article.synopsis %></p>

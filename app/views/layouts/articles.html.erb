@@ -2,27 +2,30 @@
 <% user = check_and_return_user %>
 <html>
 <head>
-	<%= stylesheet_link_tag "blog_styles", :cache => true %>
+	<%= stylesheet_link_tag "blog_styles_white.css", :cache => true %>
 	<%= stylesheet_link_tag "scaffold", :cache => true %>
 	<%= javascript_include_tag :all %>
 
 	<script type="text/javascript">
 		window.onload = function(){
-			Effect.Fade("notice-div", {duration: 3.0 });
+			Effect.Fade("notice-div", {duration: 4.0 });
 		}
 		
 	</script>
 </head>
 <body>
 	<div id="header">
-	 <%= create_blocks :width => 25, :height => 25, :columns => 35, :rows => 6, :class => "block" %>
+	 <%= create_blocks :width => 25, :height => 25, :columns => 46, :rows => 4, :class => "block" %>
 		
-		<div id="header_content" class="hdr_content">
-			<p class="big_font opaque">~~~~~~~~~~EXOCORTEX~~~~~~~~~~</p>
+		<div id="header_content" class="hdr_content solid-underline">
 			
-			<ul class="nav med_font" id="nav_ul">
+			
+			<ul class="nav med_font white-font" id="nav_ul">
 				<li>
-					<%= link_to "Articles", "/" %>
+					<p class="big_font opaque">~~~~~~~~~~EXOCORTEX~~~~~~~~~~</p>
+				</li>
+				<li>
+					<%= link_to "Articles", "/", {:class => 'white'} %>
 				</li>
 				<li>
 					<%if current_user %>
@@ -32,11 +35,12 @@
 				<li>
 					<% if !current_user %>
 						<%= link_to "Login", new_user_session_path %>	
+						<%= link_to "Sign up", new_user_registration_path %>
 					<% else %>
 					<%= link_to "Logout", destroy_user_session_path %>
 					<% end %>
 				</li>
-				<% if current_user && current_user.roles.select {|r| r.name == "Publisher"}.count > 0 %>
+				<% if current_user && ((current_user.role? :publisher) || (current_user.role? :superuser)) %>
 				<li>
 					<%= link_to "Administration", adminarticles_path %>
 				</li>
@@ -51,8 +55,11 @@
 		<% end %>
 		<% if flash[:error] %>
 			<div id="error-div" class="errors red-border">
-				<p><%= flash[:error] %></p>
+				<p><%= flash[:error] %> </p>
 			</div>
+			<script type="text/javascript">
+			    setTimeout("new Effect.Fade('error-div', {duration: 3.0});", 2000)
+			  </script>
 		<% end %>
 	</div>
 	

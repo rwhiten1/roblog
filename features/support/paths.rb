@@ -11,10 +11,17 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /the list of users/
-      '/users'
+      user_index_path
       
     when /the list of articles/
       '/'
+      
+    when /admin articles index/
+      '/adminarticles'
+      
+    when /the "(.*)" page/
+      a = Article.find_by_title($1)
+      article_path(a)
       
     
     # Add more mappings here.

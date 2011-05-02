@@ -7,11 +7,11 @@
 		</thead>
 		<% @articles.each do |article|%>
 		<tr>
-			<td><%= link_to article.title, :controller => "admin_console", :action => "show", :id => article.id %></td>
+			<td><%= link_to article.title, {:controller => "admin_console", :action => "show", :id => article.id}, {:class => "light-blue-font"} %></td>
 			<td><%= article.created_at %></td>
 			<td><%= article.updated_at %></td>
 			<td><%= article.get_status %></td>
-			<td><%= link_to "edit", :controller => "admin_console", :action => "edit", :id => article.id %></td>
+			<td><%= link_to "edit", {:controller => "admin_console", :action => "edit", :id => article.id}, {:class => "light-blue-font"} %></td>
 		</tr>
 		<% end %>
 	</table>

@@ -14,7 +14,7 @@ Feature: Manage Articles
 
 	
 	Scenario: Edit Article from Admin Page
-		Given an unpublished article titled "Test Article"
+		Given an unpublished article titled "Test Article" by "hmfic"
 		When I am logged in as "hmfic" with a password of "secret"
 			And I follow "Administration"
 			And I follow "edit"
@@ -24,7 +24,7 @@ Feature: Manage Articles
 
 	
 	Scenario: Show Unpublished Article
-		Given an unpublished article titled "Second Test Article"
+		Given an unpublished article titled "Second Test Article" by "hmfic"
 	 	When I am logged in as "hmfic" with a password of "secret"
 		 	And I follow "Administration"
 		 	And I follow "Second Test Article"
@@ -36,7 +36,7 @@ Feature: Manage Articles
 	  Given I am logged in as "publisher" with a password of "secret"
 	  When I create a new article named "Brand New" with a body of "ipsum lorem"
 	  	And I go back to the main page
-	  Then I should see "by: publisher"
+	  Then I should see /by: John.*Smith/
 	
 	
 	Scenario: A user should only see their articles
@@ -51,7 +51,7 @@ Feature: Manage Articles
 				|title|body|
 				|Article 3|stuf stuff stuff|
 				|Article 4|hippity hoppity|
-	  When I go back to the main page
+	  When I go to admin articles index
 	  Then I should see "Article 3"
 			And I should see "Article 4"
 			And I should not see "Article 1"

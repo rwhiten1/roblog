@@ -1,19 +1,23 @@
-
+<%
+	#if session[:comment_data]
+	#	comment = session[:comment_data]
+	#end
+	comment ||= session[:comment_data]
+%>
 <h2 class="light-grey-font med_font">Post a new comment</h2>
 <% if !current_user %>
 <div id="reg_nav" style="position: relative; top: -25px; left:550px; width:20%;">
 	<ul class="nav med_font" id="comment_nav">
-		<li><%= link_to "Login", new_user_session_path, {:class => "lt_grey"} %></li>
-		<li><%= link_to "Register", new_user_registration_path, {:class => "lt_grey"} %></li>
+		<li><%= link_to "Login", new_user_session_path %></li>
+		<li><%= link_to "Register", new_user_registration_path %></li>
 	</ul>
 </div>
 <% end %>	
 
 <% form_for([@article,@article.comments.build]) do |f| %>
- 
-
-  <%= f.text_area :body,:rows => 10, :cols => 100 , :class => "text_area"%>
-  
+	<textarea class="text_area" cols="100" id="comment_body" name="comment[body]" rows="10">
+<%= comment.try(:strip!) %>
+	</textarea>
   <% if current_user %>
 	<input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
   <% end %>
