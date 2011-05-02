@@ -39,7 +39,7 @@
 #show_users.save
 #users_index.save
 #
-create the roles
+#create the roles
 publisher_role = Role.create({:name => "Publisher"})
 commenter_role = Role.create({:name => "Commenter"})
 admin_role = Role.create({:name => "Superuser"})
