@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   
   #To support OAuth authentication with Facebook
   def self.find_for_facebook_oauth(access_token, signed_in_resource = nil)
-    data = access_token['extr']['user_hash']
+    data = access_token['extra']['user_hash']
     if user = User.find_by_email(data["email"])
       user
     else
