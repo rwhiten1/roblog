@@ -1,9 +1,9 @@
-Rails.application.config.middleware.use OmniAuth::Builder do
-    puts "IS OMNIAUTH INITIALIZER BEING CALLED?"
-    provider :facebook, '160343384030567', '75b140df0def2a3932a82380d04f1449', 
-    {:scope => 'EMAIL, OFFLINE_ACCESS',:client_options => {:ssl => {:ca_file => '/etc/ssl/certs/ca-certificates.crt'}}}
-end
-
+#Rails.application.config.middleware.use OmniAuth::Builder do
+#    puts "IS OMNIAUTH INITIALIZER BEING CALLED?"
+#    provider :facebook, '160343384030567', '75b140df0def2a3932a82380d04f1449', 
+#    {:scope => 'EMAIL, OFFLINE_ACCESS',:client_options => {:ssl => {:ca_file => '/etc/ssl/certs/ca-certificates.crt'}}}
+#end
+#
 #OmniAuth::Strategies::Facebook.class_eval do 
 #  #This monkey patches the oa-oauth gem to reduce the default amount of access your app asks for
 #  #The reasoning here is that there is a "strong inverse correlation" between the amount of data you ask
