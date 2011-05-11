@@ -39,8 +39,16 @@ class User < ActiveRecord::Base
     else
       User.create!(:email => data["email"], :password => Devise.friendly_token[0,20])
     end
-    
   end
+  
+  #pulls a user's facebook email address from oauth data and uses that for new user registration
+  def self.new_with_session(params, session)
+      super.tap do |user|
+        if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
+          user.email = data["email"]
+        end
+      end
+    end
   
   private
   
