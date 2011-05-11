@@ -1,4 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
+    puts "IS OMNIAUTH INITIALIZER BEING CALLED?"
     provider :facebook, "160343384030567", "75b140df0def2a3932a82380d04f1449", 
     {:scope => 'email, offline_access',:client_options => {:ssl => {:ca_file => "/etc/ssl/certs/ca-certificates.crt"}}}
 end
