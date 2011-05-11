@@ -1,6 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
     provider :facebook, "160343384030567", "75b140df0def2a3932a82380d04f1449", 
-    {:scope => 'email, offline_access',:client_options => {:ssl => {:ca_path => "/usr/lib/ssl"}}}
+    {:scope => 'email, offline_access',:client_options => {:ssl => {:ca_path => "/etc/ssl/certs/ca-certificates.crt"}}}
 end
 
 #OmniAuth::Strategies::Facebook.class_eval do 
