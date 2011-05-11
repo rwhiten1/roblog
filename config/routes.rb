@@ -1,6 +1,6 @@
 Roblog::Application.routes.draw do |map|
   
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
   
   devise_scope :user do
     get '/login' => 'devise/sessions#new'

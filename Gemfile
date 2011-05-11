@@ -14,7 +14,7 @@ end
 
 group :development do
    gem 'rspec-rails', '>= 2.0.0.beta.22'
-   gem 'mysql2'
+   #gem 'mysql2'
    gem 'factory_girl_rails'
 end
 
@@ -22,12 +22,14 @@ gem 'rails', '3.0.3'
 gem 'devise', '>= 1.1.rc2'
 gem "cancan"
 gem "RedCloth"
-
+#gem "oa-oauth", :require => "omniauth/oauth"
+gem "omniauth"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3-ruby', :require => 'sqlite3
-gem 'mysql2'
+gem 'mysql2', '<= 0.2.7'
+#gem 'activerecord-mysql2-adapter'
 
 # Use unicorn as the web server
 # gem 'unicorn'

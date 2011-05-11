@@ -13,6 +13,15 @@
 	</script>
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		FB.init({appId: '160343384030567', 
+						 cookie:true,
+						 status:true,
+						 xfbml:true
+						})
+	</script>
 	<div id="header">
 	 <%= create_blocks :width => 25, :height => 25, :columns => 46, :rows => 4, :class => "block" %>
 		
@@ -33,6 +42,7 @@
 				</li>
 				<li>
 					<% if !current_user %>
+						<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)%>
 						<%= link_to "Login", new_user_session_path %>	
 						<%= link_to "Sign up", new_user_registration_path %>
 					<% else %>
