@@ -236,7 +236,7 @@ body{
 		list-style-type: none;
 		display: inline;
 		width: 100%;
-		padding: 0px;
+		padding: 10px 0px 10px 0px;
 		margin: 0px;
 	}
 	
@@ -248,7 +248,7 @@ body{
 	
 	.nav li a{
 		width: auto;
-		padding: 2px 10px 10px 10px;
+		padding: 2px 10px 20px 10px;
 		height: 10%;
 		color: #012345;
 	}
