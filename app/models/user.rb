@@ -37,7 +37,10 @@ class User < ActiveRecord::Base
     if user = User.find_by_email(data["email"])
       user
     else
-      User.create!(:email => data["email"], :password => Devise.friendly_token[0,20])
+      User.create!(:email => data["email"], 
+                   :password => Devise.friendly_token[0,20], 
+                   :first_name => data["first_name"],
+                   :last_name => data["last_name"])
     end
   end
   
@@ -46,6 +49,8 @@ class User < ActiveRecord::Base
       super.tap do |user|
         if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
           user.email = data["email"]
+          user.last_name = data["last_name"]
+          user.first_name = data["first_name"]
         end
       end
     end
