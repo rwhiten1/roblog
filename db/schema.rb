@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110501025426) do
+ActiveRecord::Schema.define(:version => 20110527221452) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20110501025426) do
     t.datetime "updated_at"
     t.boolean  "published"
     t.integer  "author_id"
+    t.string   "checksum"
+    t.text     "body_html"
   end
 
   add_index "articles", ["author_id"], :name => "articles_authors_fk"

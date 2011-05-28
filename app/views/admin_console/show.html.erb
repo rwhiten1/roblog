@@ -10,7 +10,7 @@
 </div>
 
 <div class="article-body white-font article-font dotted-underline">
-  <%= @article.render_to_html.html_safe %>
+  <%= sanitize @article.render_to_html %>
 </div>
 
 <%= link_to "Save", :action => "index", :controller => "admin_console", :id => @article %>

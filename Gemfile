@@ -18,10 +18,13 @@ group :development do
    gem 'factory_girl_rails'
 end
 
+gem 'rake', '~>0.8.7'
 gem 'rails', '3.0.3'
 gem 'devise', '>= 1.1.rc2'
 gem "cancan"
-gem "RedCloth"
+#gem "RedCloth"
+gem "ultraviolet"
+gem "rdiscount"
 #gem "oa-oauth", :require => "omniauth/oauth"
 gem "omniauth"
 # Bundle edge Rails instead:

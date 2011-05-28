@@ -36,4 +36,9 @@ module ArticlesHelper
     
     html.html_safe
   end
+  
+  def format_code
+    
+  end
+  
 end
