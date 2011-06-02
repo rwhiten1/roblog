@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
       User.create!(:email => data["email"], 
                    :password => Devise.friendly_token[0,20], 
                    :first_name => data["first_name"],
-                   :last_name => data["last_name"])
+                   :last_name => data["last_name"],
+                   :username => data["email"])
     end
   end
   
@@ -67,6 +68,6 @@ class User < ActiveRecord::Base
       r.save
     end
     
-    roles << r
+    roles << r if self.roles.size <= 0
   end
 end

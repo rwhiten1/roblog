@@ -26,4 +26,21 @@ describe User, "Defaults" do
     u = User.new 
     u.role?(:commenter).should == true
   end
+
+  it "should only assign a default role once" do
+    u = User.new
+    u.role?(:commenter).should == true
+
+    u.first_name = "Test"
+    u.last_name = "User"
+    u.email = "test.user@blog.com"
+    u.password = "testuser"
+    u.save
+
+    v = User.find_by_email("test.user@blog.com")
+    v.roles.size.should == 1
+    v.roles.select do |r|
+      r.name == "Commenter"
+    end.size.should == 1
+  end
 end
