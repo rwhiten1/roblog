@@ -42,6 +42,14 @@ Factory.define :article do |a|
   a.published {false}
 end
 
+Factory.sequence :tag_names do |tg|
+  "tag_#{tg}"
+end
+
+Factory.define :tag do |t|
+  t.tag_name (Factory.next :tag_names)
+end
+
 
 
 

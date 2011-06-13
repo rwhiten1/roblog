@@ -1,6 +1,16 @@
+
 <p class="light-grey-font huge_font dotted-underline">
   <%= @article.title %>
 </p>
+
+<div id="tags_div" class="article_tag_list light-grey-font article-font">
+  <p id="tags_title">Tags: </p>
+  <ul id="tags_list">
+     <%	 @article.tags.each do |tag| %>
+    <li><%= link_to tag.tag_name, tagged_tag_articles_path(tag) %></li>
+     <%	 end %>
+  </ul>
+</div>
 
 <!-- The article body -->
 <div class="article-body white-font article-font">

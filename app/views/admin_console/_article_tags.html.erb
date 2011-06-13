@@ -1,0 +1,6 @@
+<p>List of tags:</p>
+<ul>
+    <% @article.tags.each do |tag| %>
+      <li><%= tag.tag_name %></li>
+    <% end %>
+</ul>

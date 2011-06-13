@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110527221452) do
+ActiveRecord::Schema.define(:version => 20110611235724) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110527221452) do
     t.string   "tag_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "articles_count", :default => 0
   end
 
   create_table "users", :force => true do |t|

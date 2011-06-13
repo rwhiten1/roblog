@@ -93,6 +93,10 @@ body{
 		font-size: .85em;
 		font-family: "Lucida Grande", Helvetica, Geneva, sans-serif;
 	}
+
+    .dark-green-font{
+        color: #006600;
+    }
 	
 	/* Font color classes*/
 	.dark-blue-font{
@@ -379,6 +383,107 @@ body{
 		height: auto;
 		padding: 20px 0px 20px 10px;
 	}
+
+    .add_tag_form{
+        position:absolute;
+        top: 715px;
+        left: 370px;
+        width: auto;
+    }
+
+    .add_tag_form ul{
+      list-style-type: none;
+	  display: inline;
+      padding: 50px 0px 20px 0px;
+      margin-top: 0px;
+    }
+
+    .add_tag_form ul li{
+        display: inline;
+        padding: 20px 0px 20px 0px;
+    }
+
+    .tag_list{
+        position: absolute;
+        top: 0px;
+        left: 300px;
+        width: 400;
+        padding-bottom: 20px;
+    }
+
+    .tag_list p{
+        margin: 0 0 0 0;
+        padding: 0 0 2px 0;
+
+    }
+
+    .tag_list ul{
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+
+    }
+
+    .tag_list ul li {
+        /*display: block;*/
+        margin: 10px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+        float: left;
+        background-color: #cccccc;
+        border: 1px solid #000000;
+    }
+
+    .tag_list ul li p{
+        display: inline;
+        margin: 0 0 0 0;
+        padding: 5px 10px 5px 10px;
+        background-color: #cccccc;
+        /*border: 1px solid #000000;*/
+    }
+
+    .remove_tag{
+        display: inline;
+        /*border: 1px solid #ff0000;*/
+        margin: 0;
+        padding: 0
+    }
+
+    .tag_list ul li p input{
+        display: inline;
+        /*border: 1px solid #336600;*/
+        /*background-color: #ff3333;*/
+        /*margin: 0;
+        padding: 0;*/
+    }
+
+    .article_tag_list{
+       background-color: #ccffcc;
+       border: 1px solid #000000;
+       width: auto;
+       padding-top: 3px;
+       padding-bottom: 3px;
+    }
+
+    .article_tag_list ul{
+        display: inline;
+        list-style-type: none;
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
+
+    .article_tag_list p{
+        display: inline;
+        margin-left: 3px;
+
+    }
+
+    .article_tag_list ul li{
+        display: inline;
+        margin: 5px 5px 5px 5px;
+        padding: 2px 5px 2px 5px;
+        /*background-color: #ccffcc;
+        border: 1px solid #000000;*/
+
+    }
 	
 	
 	

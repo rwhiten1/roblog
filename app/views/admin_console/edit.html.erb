@@ -16,3 +16,21 @@
 	  <input type="submit" name="sumbit" id="save_article" value="Save Article"/>
 	<% end %>
 </div>
+<div id="article_tags" class="add_tag_form">
+   <%= form_tag article_tags_path(@article) , :remote => true, :id => 'associate_tag_form' do %>
+      <div id="tag_autocomplete_div">
+        <ul>
+          <li>
+            <%= label_tag "tag_name", "Add Tag" %>
+            <%= text_field_tag "tag_name" %>
+          </li>
+          <li>
+            <%= submit_tag ">>" %>
+          </li>
+        </ul>
+      </div>
+   <% end %>
+  <div id="tag_list" class="tag_list">
+    <%= render :partial => "tags/article_tags" %>
+  </div>
+</div>

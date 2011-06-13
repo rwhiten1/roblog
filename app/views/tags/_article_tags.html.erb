@@ -1,0 +1,14 @@
+<p>Tags:</p>
+<ul>
+    <% @article.tags.each_with_index do |tag,i| %>
+      <%= form_tag untag_tag_article_path(tag,@article), :remote => true, :method => "delete", :class => "remove_tag", :name => "remove_tag_form_#{i}" do %>
+      <li>
+        <p><%= tag.tag_name %>
+            <%= submit_tag "x"%>
+        </p>
+
+      </li>
+      <% end %>
+
+    <% end %>
+</ul>

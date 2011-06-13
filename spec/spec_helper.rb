@@ -36,4 +36,19 @@ Rspec.configure do |config|
     config.after(:each) do
       DatabaseCleaner.clean
     end
+
+
+end
+
+#using these in a couple places
+#create an agent
+def do_signin
+  user = Factory.create(:user)
+  sign_in :user, user
+  user.email
+end
+
+def do_signout(email)
+  a = User.find_by_email(email)
+  sign_out a
 end

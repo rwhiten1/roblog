@@ -121,6 +121,10 @@ class Article < ActiveRecord::Base
 
   end
 
+  def increment_tags_counter_cache
+    Tag.increment_counter(:articles_count, self.id)
+  end
+
 
 
 end

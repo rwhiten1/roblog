@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => ["index", "show"]
+  skip_before_filter :authenticate_user!, :only => ["index", "show", "tagged"]
   #skip_before_filter :check_authorization#, :only => ["index", "show"]
   load_and_authorize_resource
   respond_to :html, :xml
@@ -102,6 +102,22 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(articles_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def untag
+    @article = Article.find(params[:id])
+    tag = Tag.find(params[:tag_id])
+    @article.tags.delete(tag)
+    tag.decrement_article_count
+    render "tags/article_tags"
+  end
+
+  def tagged
+    @tag = Tag.find(params[:tag_id])
+    @articles = @tag.articles
+    respond_to do |format|
+      format.html { render("index")}
     end
   end
 end

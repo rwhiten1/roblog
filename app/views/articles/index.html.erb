@@ -1,3 +1,6 @@
+<% if @tag %>
+   <p class="med_font dotted-underline">Articles tagged with: <span class="dark-green-font"><%= @tag.tag_name  %></span></p>
+<% end %>
 <% @articles.each do |article| %>
  	<% if article.published?%>
     <div class="article">

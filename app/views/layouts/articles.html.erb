@@ -2,23 +2,27 @@
 <html>
 <head>
 
+  <%= csrf_meta_tag %>
 	<%= stylesheet_link_tag "blog_styles_white" %>
 	<%= stylesheet_link_tag "scaffold" %>
-	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag :all %>
 	<!--
 	<%= stylesheet_link_tag "all" %>
-	<%= javascript_include_tag 'all' %>
+	<%= javascript_include_tag 'all.js.bak' %>
 	-->
 	<%= stylesheet_link_tag "ultraviolet/blackboard" %>
-	
+
 
 	
 
 	<script type="text/javascript">
-		window.onload = function(){
+		$(document).ready(
+                    function(){
 
-			Effect.Fade("notice-div", {duration: 4.0 });
-		}
+			            $('#notice-div').fadeOut(4000.0);
+                        $('#error-div').fadeOut(4000.0)
+		            }
+                );
 		
 	</script>
 </head>
@@ -78,9 +82,11 @@
 			<div id="error-div" class="errors red-border">
 				<p><%= flash[:error] %> </p>
 			</div>
+          <!--
 			<script type="text/javascript">
 			    setTimeout("new Effect.Fade('error-div', {duration: 3.0});", 2000)
 			  </script>
+		  -->
 		<% end %>
 	</div>
 	

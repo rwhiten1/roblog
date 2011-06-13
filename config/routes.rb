@@ -21,7 +21,23 @@ Roblog::Application.routes.draw do |map|
   
   resources :articles, :only => ["index", "show"]  do
     resources :comments
+    resources :tags
+
   end
+
+  resources :tags do
+    resources :articles do
+      collection do
+        get "tagged"
+      end
+
+      member do
+        delete "untag"
+      end
+    end
+  end
+
+
   
   resources :roles
   
@@ -33,6 +49,7 @@ Roblog::Application.routes.draw do |map|
   #match "logout" => "admin_console#logout"
   #match "adminarticles/:id/save_edits" => "admin_console#save_edits"
   #match "index" => "articles#index"
+  match "tags/lookup" => "tags#lookup"
   
 
   # The priority is based upon order of creation:

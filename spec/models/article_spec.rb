@@ -48,3 +48,9 @@ describe Article, "Markdown and syntax highlighting" do
     exp.should match(/<pre class="blackboard"/)
   end
 end
+
+describe Article,"Counter Cache for Tags" do
+  before(:each) do
+
+  end
+end
