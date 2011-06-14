@@ -42,11 +42,20 @@ class Tag < ActiveRecord::Base
       @@tag_usage_standard_dev.round(2)
     end
   end
+  
+  def self.reset_usage_metrics
+    @@average_tag_usage = nil
+    @@tag_usage_standard_dev = nil
+  end
 
   def deviations
-    cnt = Tag.find_by_sql ["SELECT articles_count FROM tags WHERE id=?",self.id]
-    t = cnt[0].articles_count - Tag.average_usage #@@average_tag_usage #figure out the distance from the mean @@tag_usage_standard_dev
-    (t/Tag.tag_usage_stddev).round(0)
+    if Tag.tag_usage_stddev > 0
+      cnt = Tag.find_by_sql ["SELECT articles_count FROM tags WHERE id=?",self.id]
+      t = cnt[0].articles_count - Tag.average_usage #@@average_tag_usage #figure out the distance from the mean @@tag_usage_standard_dev
+      (t/Tag.tag_usage_stddev).round(0)
+    else
+      0.0
+    end
   end
 
 

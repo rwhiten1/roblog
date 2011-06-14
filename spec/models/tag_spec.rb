@@ -54,4 +54,46 @@ describe Tag do
     @tag2.deviations.should == -1
 
   end
+  
+  
+end
+
+describe Tag, "deviations" do
+  before(:each) do
+    #DatabaseCleaner.clean
+    Tag.reset_usage_metrics
+    @tag1 = Factory.create(:tag, :tag_name => "Tag_1")
+    0.upto(2) do |i|
+      a = Factory.create(:article, :title => "Tag_1_Article_#{i}")
+      a.save
+      @tag1.articles << a
+      @tag1.increment_article_count
+    end
+    @tag1.save
+
+    @tag2 = Factory.create(:tag, :tag_name => "Tag_2")
+    0.upto(2) do |i|
+      a = Factory.create(:article, :title => "Tag_2_Article_#{i}")
+      a.save
+      @tag2.articles << a
+      @tag2.increment_article_count
+    end
+    @tag2.save
+
+    @tag3 = Factory.create(:tag, :tag_name => "Tag_3")
+    0.upto(2) do |i|
+      a = Factory.create(:article, :title => "Tag_3_Article_#{i}")
+      a.save
+      @tag3.articles << a
+      @tag3.increment_article_count
+    end
+    @tag3.save
+  end
+  
+  it "should handle divide by zero" do
+    #there should be no variance in the data, so the stddev should be zero
+    Tag.average_usage.should == 3
+    @tag1.deviations.should == 0
+  end
+  
 end
