@@ -45,9 +45,8 @@ class Tag < ActiveRecord::Base
 
   def deviations
     cnt = Tag.find_by_sql ["SELECT articles_count FROM tags WHERE id=?",self.id]
-    t = cnt[0].articles_count - @@average_tag_usage #figure out the distance from the mean
-    puts "DISTANCE: #{t}"
-    (t/@@tag_usage_standard_dev).round(0)
+    t = cnt[0].articles_count - Tag.average_usage #@@average_tag_usage #figure out the distance from the mean @@tag_usage_standard_dev
+    (t/Tag.tag_usage_stddev).round(0)
   end
 
 

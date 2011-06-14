@@ -82,16 +82,19 @@
 			<div id="error-div" class="errors red-border">
 				<p><%= flash[:error] %> </p>
 			</div>
-          <!--
-			<script type="text/javascript">
-			    setTimeout("new Effect.Fade('error-div', {duration: 3.0});", 2000)
-			  </script>
-		  -->
+
 		<% end %>
 	</div>
+
+    <div id="tag_cloud_container">
+
+    <%= render :partial => 'tag_cloud' %>
+    </div>
 	
 	<div id="content" class="light-grey-font">
 		<%= yield :layout %>
 	</div>
+
+
 </body>
 </html>

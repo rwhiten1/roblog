@@ -1,5 +1,6 @@
 body{
 	background-color: #FFF;  /*#0f0f0f;*/
+    font-size: 100%;
 }
 	#header{
 		width: 1000px;
@@ -18,6 +19,7 @@ body{
 		top: 150px;
 		left: 50px;
 		padding: 10px 0px 20px 10px;
+
 	}
 	
 	.block{
@@ -94,6 +96,10 @@ body{
 		font-family: "Lucida Grande", Helvetica, Geneva, sans-serif;
 	}
 
+    .tag_font{
+        font-family:
+    }
+
     .dark-green-font{
         color: #006600;
     }
@@ -165,7 +171,7 @@ body{
 	.comment-body{
 		margin: 0px;
 		float:left;
-		width: 865px;
+		width: 700px;
 	}
 	
 	.text_area{
@@ -274,7 +280,7 @@ body{
 	
 	/*article specific styles*/
 	.article{
-		padding: 20px 0px 10px 0px;
+		padding: 5px 0px 10px 0px;
 		width: 100%;
 		border-bottom: 1px dashed #123456; /*#edcba9;*/
 	}
@@ -456,8 +462,8 @@ body{
     }
 
     .article_tag_list{
-       background-color: #ccffcc;
-       border: 1px solid #000000;
+       background-color: #e6ffe8; /*#ccffcc;*/
+       border: 1px solid #123456;
        width: auto;
        padding-top: 3px;
        padding-bottom: 3px;
@@ -484,7 +490,56 @@ body{
         border: 1px solid #000000;*/
 
     }
-	
+
+    #tag_cloud_container{
+      position:absolute;
+        top: 150px;
+        left: 825px;
+        width: 20%;
+        height: 165%;
+        padding: 20px 0px 20px 10px;
+        border-left: 1px dotted #123456;
+        margin-top: 10px;
+    }
+
+    #tag_cloud_container p{
+        margin: 3px 0 10px 0;
+        padding: 0 0 0 0;
+    }
+
+
+    #tag_cloud{
+
+        width: 100%;
+        height: 100%; /*100%;*/
+        /*border-left: 1px dotted #123456; */
+        /*background-color: #e6ffe8; */
+        /*padding-bottom: 20px;
+        padding-top: 15px;*/
+
+    }
+
+    #tag_cloud ul{
+       margin: 3px 0 0 0px;
+       padding: 0 0 20px 0;
+       display: inline;
+       list-style-type: none;
+    }
+
+
+    #tag_cloud ul li{
+      display: inline;
+      padding: 5px 2px 5px 0px;
+      margin-bottom: 10px
+    }
+
+    #tag_cloud ul li a{
+        margin-bottom: 10px;
+    }
+
+
+
+
 	
 	
 	

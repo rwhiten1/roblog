@@ -1,0 +1,19 @@
+<div id="tag_cloud" class="">
+  <p class="light-grey-font big_font dotted-underline">
+       All tags:
+     </p>
+  <% tags = Tag.all	  %>
+  <ul>
+    <% tags.each do |tag| %>
+        <% puts "TAG: #{tag.tag_name} " %>
+    <%	 if tag.deviations < -1  %>
+            <li class="micro_font"><%= link_to tag.tag_name, tagged_tag_articles_path(tag) %></li>
+    <%	 elsif tag.deviations >= -1 && tag.deviations < 1 %>
+            <li class="med_font"><%= link_to tag.tag_name, tagged_tag_articles_path(tag) %></li>
+    <%	 else  %>
+            <li class="huge_font"><%= link_to tag.tag_name, tagged_tag_articles_path(tag) %></li>
+    <%	 end  %>
+    <% end %>
+
+  </ul>
+</div>
